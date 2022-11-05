@@ -90,6 +90,20 @@
                 <b-col
                   class="text-left">
                   <span class="font-weight-bold">
+                    <span style="color:red;">* </span>Tipo Producto
+                  </span>:<br>
+                  <span v-if="(tipoOperacion === 'Ver' || tipoOperacion === 'Eliminar')">
+                    {{objeto.descripciontipoproducto}}
+                  </span>
+                  <b-form-select v-else v-model="objeto.idtipoproducto" class="mb-3">
+                    <option :key="'tipo_' + t" v-for="(tipo, t) in tipoProductos" :value="tipo.id">{{tipo.descripcion}}</option>
+                  </b-form-select>
+                </b-col>
+              </b-row>
+              <b-row class="mb-3">
+                <b-col
+                  class="text-left">
+                  <span class="font-weight-bold">
                     <span style="color:red;">* </span>Descripción
                   </span>:<br>
                   <span v-if="(tipoOperacion === 'Ver' || tipoOperacion === 'Eliminar')">
@@ -172,20 +186,6 @@
                   </span>
                   <b-form-select v-else v-model="objeto.estado" class="mb-3">
                     <option :key="'esta_' + e" v-for="(estado, e) in estados" :value="estado.descripcion">{{estado.descripcion}}</option>
-                  </b-form-select>
-                </b-col>
-              </b-row>
-              <b-row class="mb-3">
-                <b-col
-                  class="text-left">
-                  <span class="font-weight-bold">
-                    <span style="color:red;">* </span>Tipo Producto
-                  </span>:<br>
-                  <span v-if="(tipoOperacion === 'Ver' || tipoOperacion === 'Eliminar')">
-                    {{objeto.descripciontipoproducto}}
-                  </span>
-                  <b-form-select v-else v-model="objeto.idtipoproducto" class="mb-3">
-                    <option :key="'tipo_' + t" v-for="(tipo, t) in tipoProductos" :value="tipo.id">{{tipo.descripcion}}</option>
                   </b-form-select>
                 </b-col>
               </b-row>
