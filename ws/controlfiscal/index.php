@@ -63,7 +63,7 @@ $data->prefijoFactura = $prefijoCaja;
 
 $use = $conexion->prepare(" select * from pinchetas_restaurante.pedido pedi
 				inner join pinchetas_restaurante.estadopedido espe on (espe.espe_id = pedi.espe_id)
-				WHERE pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+				where pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
 				and pedi.pedi_numerofactura > 0
 				and espe.espe_descripcion = ?
 				order by pedi.pedi_numerofactura asc; "); 						
@@ -78,7 +78,7 @@ $data->cantidadFacturasUsadas = $cantidadFacturasUsadas;
 
 $use = $conexion->prepare(" select * from pinchetas_restaurante.pedido pedi
 				inner join pinchetas_restaurante.estadopedido espe on (espe.espe_id = pedi.espe_id)
-				WHERE pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+				where pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
 				and pedi.pedi_numerofactura > 0
 				and espe.espe_descripcion = ?
 				order by pedi.pedi_numerofactura asc limit 1; "); 						
@@ -92,7 +92,7 @@ $data->numeroPrimeraFacturaUsada = $numeroPrimeraFacturaUsada;
 
 $use = $conexion->prepare(" select * from pinchetas_restaurante.pedido pedi
 				inner join pinchetas_restaurante.estadopedido espe on (espe.espe_id = pedi.espe_id)
-				WHERE pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+				where pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
 				and pedi.pedi_numerofactura > 0
 				and espe.espe_descripcion = ?
 				order by pedi.pedi_numerofactura desc limit 1; "); 						
@@ -112,7 +112,8 @@ $use = $conexion->prepare(" select
 				from pinchetas_restaurante.detallepedido depe
 				inner join pinchetas_restaurante.pedido pedi on (pedi.pedi_id = depe.pedi_id)
 				inner join pinchetas_restaurante.estadopedido espe on (espe.espe_id = pedi.espe_id)
-				WHERE pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+				where pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+				and pedi.pedi_numerofactura > 0
 				and espe.espe_descripcion = ?
 				order by pedi.pedi_numerofactura asc; "); 	
 					
@@ -157,7 +158,8 @@ if ($count > 0) {
 						inner join pinchetas_restaurante.estadopedido espe on (espe.espe_id = pedi.espe_id)
 						inner join pinchetas_restaurante.producto prod on (prod.prod_id = depe.prod_id)
 						inner join pinchetas_restaurante.tipoproducto tipr on (tipr.tipr_id = prod.tipr_id)
-						WHERE pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+						where pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+						and pedi.pedi_numerofactura > 0
 						and espe.espe_descripcion = ?
 						and tipr.tipr_id = ?
 						order by pedi.pedi_numerofactura asc; "); 
@@ -199,7 +201,8 @@ $use = $conexion->prepare(" select
 				pedi.pedi_fecha as fecha
 				from pinchetas_restaurante.pedido pedi
 				inner join pinchetas_restaurante.estadopedido espe on (espe.espe_id = pedi.espe_id)
-				WHERE pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+				where pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+				and pedi.pedi_numerofactura > 0
 				and espe.espe_descripcion = ?
 				and pedi.pedi_tipopago = ?
 				order by pedi.pedi_numerofactura asc; "); 	
@@ -220,7 +223,8 @@ $use = $conexion->prepare(" select
 				from pinchetas_restaurante.detallepedido depe
 				inner join pinchetas_restaurante.pedido pedi on (pedi.pedi_id = depe.pedi_id)
 				inner join pinchetas_restaurante.estadopedido espe on (espe.espe_id = pedi.espe_id)
-				WHERE pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+				where pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+				and pedi.pedi_numerofactura > 0
 				and espe.espe_descripcion = ?
 				and pedi.pedi_tipopago = ?
 				order by pedi.pedi_numerofactura asc; "); 	
@@ -244,7 +248,8 @@ $use = $conexion->prepare("  select
 				pedi.pedi_fecha as fecha
 				from pinchetas_restaurante.pedido pedi
 				inner join pinchetas_restaurante.estadopedido espe on (espe.espe_id = pedi.espe_id)
-				WHERE pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+				where pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+				and pedi.pedi_numerofactura > 0
 				and espe.espe_descripcion = ?
 				and pedi.pedi_tipopago = ?
 				order by pedi.pedi_numerofactura asc; "); 	
@@ -265,7 +270,8 @@ $use = $conexion->prepare(" select
 				from pinchetas_restaurante.detallepedido depe
 				inner join pinchetas_restaurante.pedido pedi on (pedi.pedi_id = depe.pedi_id)
 				inner join pinchetas_restaurante.estadopedido espe on (espe.espe_id = pedi.espe_id)
-				WHERE pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+				where pedi.pedi_fecha BETWEEN DATE_ADD(?, INTERVAL 0 SECOND) AND DATE_ADD(?, INTERVAL 86399 SECOND)
+				and pedi.pedi_numerofactura > 0
 				and espe.espe_descripcion = ?
 				and pedi.pedi_tipopago = ?
 				order by pedi.pedi_numerofactura asc; "); 	
@@ -288,5 +294,4 @@ $data->totalValorBaseDepartamentos = number_format($totalValorBaseDepartamentos,
 $data->totalValorIcoDepartamentos = number_format($totalValorIcoDepartamentos,2,",",".");
 
 print_r(json_encode($data));
-
 ?>
