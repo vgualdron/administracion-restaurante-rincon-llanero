@@ -142,8 +142,8 @@ export default {
     };
   },
   methods: {
-    format: function (input){
-      var num = input.replace(/\./g,'');
+    format: function (input) {
+      let num = input.toString().replace(/\./g,'');
       if(!isNaN(num)){
         num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
         num = num.split('').reverse().join('').replace(/^[\.]/,'');

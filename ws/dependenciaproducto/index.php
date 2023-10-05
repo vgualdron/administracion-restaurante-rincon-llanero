@@ -120,7 +120,6 @@ try {
           
   	  } else {
         $conexion->rollback();
-        $input['id'] = $postId;
         $input['mensaje'] = "Error eliminando";
         header("HTTP/1.1 400 Bad Request");
         echo json_encode($input);
